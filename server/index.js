@@ -6,7 +6,7 @@ config();
 
 const app = express();
 
-(async () => {
+app.use(express.json())(async () => {
   await mongoose.connect(process.env.DB_URL);
   app.listen(process.env.PORT, () => console.log("Server started"));
 })();
