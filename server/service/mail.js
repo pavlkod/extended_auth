@@ -1,4 +1,4 @@
 class MailService {
-  async sendActivationMain() {}
+  async sendActivationMail(to, link) {}
 }
 export default new MailService();
