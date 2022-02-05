@@ -3,7 +3,7 @@ import UserController from "../controllers/user.js";
 
 const router = new Router();
 
-router.post("/register");
+router.post("/register", UserController.register);
 router.post("/login");
 router.post("/logout");
 router.get("/activate/:link");
