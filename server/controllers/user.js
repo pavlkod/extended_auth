@@ -17,5 +17,14 @@ class UserController {
       res.status(400).json({ message: e.message });
     }
   }
+  async activate(req, res) {
+    try {
+      const { link } = req.params;
+      await userService.activate(link);
+      return res.redirect(process.env.CLIENT_URL);
+    } catch (e) {
+      res.status(400).json({ message: e.message });
+    }
+  }
 }
 export default new UserController();
