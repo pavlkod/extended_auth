@@ -10,5 +10,9 @@ class ApiError extends Error {
   static UnauthorizedError() {
     return new ApiError(401, "User not authorized");
   }
+
+  static BadRequest(message, erorrs = []) {
+    return new ApiError(401, "User not authorized");
+  }
 }
 export default ApiError;
