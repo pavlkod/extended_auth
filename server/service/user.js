@@ -30,6 +30,15 @@ class UserService {
       user: userDto,
     };
   }
+
+  async activate(activatedLink) {
+    const user = await UserModel.findOne({ activatedLink });
+    if (!user) {
+      throw new Error("Wrong code");
+    }
+    user.isActivated = true;
+    await user.save();
+  }
 }
 
 export default new UserService();
