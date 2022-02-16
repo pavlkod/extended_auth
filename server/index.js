@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import router from "./router/index.js";
 
+import errorMiddleware from "./middlewares/error";
+
 config();
 
 const app = express();
@@ -12,6 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
+app.use(errorMiddleware);
 
 app.use("/api", router);
 (async () => {
