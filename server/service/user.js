@@ -5,6 +5,8 @@ import { v4 } from "uuid";
 import tokenService from "../service/token.js";
 import UserDto from "../dto/user.js";
 
+import ApiError from "../exceptions/apiError.js";
+
 class UserService {
   async register(email, password) {
     const candidate = await UserModel.findOne({ email });
