@@ -11,7 +11,7 @@ class UserService {
   async register(email, password) {
     const candidate = await UserModel.findOne({ email });
     if (candidate) {
-      throw new ApiError.BadRequest("User already exists");
+      throw ApiError.BadRequest("User already exists");
     }
     const hashPassword = await bcryptjs.hash(password, 3);
     const activatedLink = v4();
@@ -36,7 +36,7 @@ class UserService {
   async activate(activatedLink) {
     const user = await UserModel.findOne({ activatedLink });
     if (!user) {
-      throw new Error("Wrong code");
+      throw ApiError.BadRequest("Wrong code");
     }
     user.isActivated = true;
     await user.save();
