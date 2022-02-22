@@ -14,7 +14,7 @@ class UserController {
       res.cookie("refreshToken", user.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
       res.json(user);
     } catch (e) {
-      res.status(400).json({ message: e.message });
+      next(e);
     }
   }
   async activate(req, res) {
@@ -23,7 +23,7 @@ class UserController {
       await userService.activate(link);
       return res.redirect(process.env.CLIENT_URL);
     } catch (e) {
-      res.status(400).json({ message: e.message });
+      next(e);
     }
   }
 }
