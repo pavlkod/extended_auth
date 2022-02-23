@@ -1,4 +1,8 @@
 import userService from "../service/user.js";
+import { validationResult } from "express-validator";
+
+import ApiError from "../exceptions/apiError.js";
+
 class UserController {
   async users(req, res, next) {
     try {
@@ -9,6 +13,10 @@ class UserController {
   }
   async register(req, res) {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return next(ApiError.BadRequest("Error transfer parameters", errors.array()));
+      }
       const { email, password } = req.body;
       const user = await userService.register(email, password);
       res.cookie("refreshToken", user.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
