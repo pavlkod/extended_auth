@@ -1,4 +1,4 @@
-import ApiError from "../";
+import ApiError from "../exceptions/apiError.js";
 export default function (err, req, res, next) {
   if (err in ApiError) {
     return res.status(err.status).json({ message: err.message, errors: err.errors });
