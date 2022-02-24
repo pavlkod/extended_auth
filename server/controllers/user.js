@@ -11,7 +11,7 @@ class UserController {
       res.status(400).json({ message: "Could not get users" });
     }
   }
-  async register(req, res) {
+  async register(req, res, next) {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -25,7 +25,7 @@ class UserController {
       next(e);
     }
   }
-  async activate(req, res) {
+  async activate(req, res, next) {
     try {
       const { link } = req.params;
       await userService.activate(link);
