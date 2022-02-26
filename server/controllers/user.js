@@ -34,5 +34,11 @@ class UserController {
       next(e);
     }
   }
+  async login(req, res, next) {
+    try {
+    } catch (e) {
+      next(e);
+    }
+  }
 }
 export default new UserController();
