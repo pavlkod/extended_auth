@@ -11,7 +11,7 @@ router.post(
   body("password").isLength({ min: 3, max: 32 }),
   UserController.register
 );
-router.post("/login");
+router.post("/login", UserController.login);
 router.post("/logout");
 router.get("/activate/:link", UserController.activate);
 router.get("/refresh");
