@@ -4,9 +4,10 @@ import { validationResult } from "express-validator";
 import ApiError from "../exceptions/apiError.js";
 
 class UserController {
-  async users(req, res, next) {
+  async getUsers(req, res, next) {
     try {
-      res.json({ message: "Get users" });
+      const users = await userService.getAllUsers();
+      return res.json(users);
     } catch (e) {
       res.status(400).json({ message: "Could not get users" });
     }
