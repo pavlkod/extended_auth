@@ -7,4 +7,10 @@ export default class Store {
   constructor() {
     makeAutoObservable(this);
   }
+  setIsAuth(bool: boolean) {
+    this.isAuth = bool;
+  }
+  getIsAuth() {
+    return this.isAuth;
+  }
 }
