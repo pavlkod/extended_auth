@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import IUser from "../models/response/IUser";
+import AuthService from "../services/AuthService";
 
 export default class Store {
   user = {} as IUser;
@@ -18,5 +19,15 @@ export default class Store {
   }
   getUser() {
     return this.user;
+  }
+  async login(email: string, password: string) {
+    try {
+      const response = await AuthService.login(email, password);
+      localStorage.setItem("token", response.data.accessToken);
+      this.setIsAuth(true);
+      this.setUser(response.data.user);
+    } catch (e) {
+      console.log(e.response?.data?.message);
+    }
   }
 }
