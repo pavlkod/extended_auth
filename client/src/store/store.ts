@@ -13,4 +13,10 @@ export default class Store {
   getIsAuth() {
     return this.isAuth;
   }
+  setUser(user: IUser) {
+    this.user = user;
+  }
+  getUser() {
+    return this.user;
+  }
 }
