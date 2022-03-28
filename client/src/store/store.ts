@@ -40,4 +40,14 @@ export default class Store {
       console.log(e.response?.data?.message);
     }
   }
+  async logout() {
+    try {
+      await AuthService.logout();
+      localStorage.removeItem("token");
+      this.setIsAuth(false);
+      this.setUser({} as IUser);
+    } catch (e) {
+      console.log(e.response?.data?.message);
+    }
+  }
 }
