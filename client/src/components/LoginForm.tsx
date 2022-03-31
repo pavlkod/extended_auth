@@ -9,8 +9,8 @@ const LoginForm: FC = () => {
     <div>
       <input type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-      <button>Login</button>
-      <button>Registration</button>
+      <button onClick={() => store.login(email, password)}>Login</button>
+      <button onClick={() => store.registration(email, password)}>Registration</button>
     </div>
   );
 };
