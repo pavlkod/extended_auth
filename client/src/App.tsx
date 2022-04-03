@@ -13,6 +13,7 @@ const App: FC = () => {
   }, []);
   return (
     <div className="App">
+      <h1>{store.isAuth ? "Пользователь авторизован" : "Авторизуйтесь"}</h1>
       <LoginForm />
     </div>
   );
