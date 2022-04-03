@@ -1,11 +1,15 @@
-import React, { createContext, Context } from "react";
+import React, { createContext } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Store from "./store/store";
 
+interface IStore {
+  store: Store;
+}
+
 const store = new Store();
-export const Context = createContext({ store });
+export const Context = createContext<IStore>({ store });
 
 ReactDOM.render(
   <React.StrictMode>
