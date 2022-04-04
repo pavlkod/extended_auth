@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import React, { FC, useContext, useEffect } from "react";
 import "./App.css";
 import LoginForm from "./components/LoginForm";
@@ -11,12 +12,16 @@ const App: FC = () => {
       store.chechAuth();
     }
   }, []);
+  //check store.isLoading
+  if (!store.isAuth) {
+    return <LoginForm />;
+  }
   return (
     <div className="App">
       <h1>{store.isAuth ? "Пользователь авторизован" : "Авторизуйтесь"}</h1>
-      <LoginForm />
+      <button onClick={() => store.logout()}>Exit</button>
     </div>
   );
 };
 
-export default App;
+export default observer(App);
