@@ -39,6 +39,9 @@ const App: FC = () => {
       <div>
         <button onClick={getUsers}>Get users</button>
       </div>
+      {users.map(user => (
+        <div key={user.id}>{user.email}</div>
+      ))}
     </div>
   );
 };
