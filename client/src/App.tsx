@@ -35,6 +35,7 @@ const App: FC = () => {
   return (
     <div className="App">
       <h1>{store.isAuth ? "Пользователь авторизован" : "Авторизуйтесь"}</h1>
+      {store.user.isActivated ? "Account is activated" : "Activate account"}
       <button onClick={() => store.logout()}>Exit</button>
       <div>
         <button onClick={getUsers}>Get users</button>
